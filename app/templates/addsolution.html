@@ -1,0 +1,101 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Solutions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    
+    h1 {
+      color: #333333;
+    }
+    
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+    }
+    
+    .form-group button {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .form-group button:hover {
+      background-color: #45a049;
+    }
+    body {
+
+background-image: url("{% static 'img/bg.jpg' %}");
+background-size: 100%;
+
+
+}
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Add Solutions</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/*"required>
+      </div>
+      <div class="form-group">
+        <label for="problem">Problem Name:</label>
+        <input type="text" id="problem" name="problem" placeholder="Problem name" required>
+      </div>
+      <div class="form-group">
+        <label for="chances">Chances of Causing:</label>
+        <input type="text" id="chances" name="chances" placeholder="Chances of causing" required>
+      </div>
+      <div class="form-group">
+        <label for="precautions">Precautions:</label>
+        <textarea id="precautions" name="precautions" placeholder="Precautions" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="solutions">Solutions:</label>
+        <textarea id="solutions" name="solutions" placeholder="Solutions" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="advisor">Advisor Name:</label>
+        <input type="text" id="advisor" name="advisor" placeholder="Advisor name" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

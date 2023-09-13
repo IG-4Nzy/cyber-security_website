@@ -1,0 +1,107 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cyber Crime Help Support - Contact Reported Users</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .contact-form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact-form h2 {
+      margin-top: 0;
+    }
+    
+    .contact-form p {
+      margin-bottom: 10px;
+    }
+    
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    
+    .contact-form input[type="file"] {
+      margin-bottom: 10px;
+    }
+    
+    .contact-form .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .contact-form .button:hover {
+      background-color: #0056b3;
+    }
+    
+    .back-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ccc;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+    
+    .back-button:hover {
+      background-color: #999;
+    }
+    body {
+
+background-image: url("{% static 'img/cont.jpg' %}");
+background-size: 100%;
+
+
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Contact Reported Users</h1>
+    <h3>{{ key }}</h3>
+    <div class="contact-form">
+      <h2>Send a Message</h2>
+      <form method="post" action="{% url 'contact' report.pk %}" enctype="multipart/form-data">
+        {%csrf_token%}
+        <p>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </p>
+        <p>
+          <label for="images">Images:</label>
+          <input type="file" id="images" name="images[]" multiple>
+        </p>
+        <input class="button" type="submit" value="Send">
+      </form>
+      <a href="{% url 'viewreports' %}" class="back-button">Back to View Reports</a>
+    </div>
+  </div>
+</body>
+</html>

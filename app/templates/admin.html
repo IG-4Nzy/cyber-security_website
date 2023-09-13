@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cyber Crime Help Support - Admin Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      padding: 20px;
+    }
+    
+    .admin-option {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .admin-option a {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+    
+    .admin-option a:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Admin Page</h1>
+    
+    <div class="admin-option">
+      <a href="{% url 'viewreports' %}">View Reports</a>
+      <p>View all submitted reports</p>
+    </div>
+    
+    <div class="admin-option">
+      <a href="{% url 'addsolution' %}">Add Solutions</a>
+      <p>Add solutions </p>
+    </div>
+
+    <div class="admin-option">
+      <a href="{% url 'home' %}">Home</a>
+      <p>Home </p>
+    </div>
+
+    <div class="admin-option">
+      <a href="{% url 'logoutt' %}">Logout</a>
+      <p>Logout </p>
+    </div>
+  </div>
+</body>
+</html>

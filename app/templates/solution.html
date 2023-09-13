@@ -1,0 +1,77 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Solutions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .card img {
+      max-width: 200px;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .card h2 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      margin-bottom: 8px;
+    }
+
+    .card .info {
+      font-style: italic;
+      color: #666;
+    }
+    body {
+
+background-image: url("{% static 'img/bg.jpg' %}");
+background-size: 100%;
+
+
+}
+.back-button{
+  position: relative;
+  left: 700px;
+  background-color: black;
+  color: azure;
+  top: 300px;
+  border-radius: 5px;
+  width: 100px;
+  height: 80px;
+  padding: auto;
+  text-decoration: none;
+
+}
+  </style>
+</head>
+<body>
+  {% if solutions %}
+  {% for solution in solutions %}
+    <div class="card">
+      <img src="{{ solution.image.url }}" alt="Solution Image">
+      <h2>{{ solution.problem }}</h2>
+      <p>Chances of causing: {{ solution.chances }}</p>
+      <p>Precautions: {{ solution.precautions }}</p>
+      <p>Solutions: {{ solution.solutions }}</p>
+      <p>Advisor: {{ solution.advisor }}</p>
+      <p class="info">Published: {{ solution.published_date }}</p>
+    </div>
+  {% endfor %}
+  {% else %}
+  <a href="{% url 'home' %}" class="back-button">Back to Home</a>
+  {% endif %}
+</body>
+</html>

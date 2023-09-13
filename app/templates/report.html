@@ -1,0 +1,113 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cyber Crime Help Support - Report</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      padding: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    
+    .button:hover {
+      background-color: #45a049;
+    }
+    
+    .back-button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    body {
+
+background-image: url("{% static 'img/bg.jpg' %}");
+background-size: 100%;
+
+
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Report a Problem</h1>
+    
+    <form  method="POST">
+        {%csrf_token%}
+      <div class="form-group">
+        <label for="issue">Issue Faced:</label>
+        <input type="text" id="issue" name="issue" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="device">Device Caused:</label>
+        <input type="text" id="device" name="device" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="screenshot">Screenshot:</label>
+        <input type="file" id="screenshot" name="screenshot">
+      </div>
+      
+      <div class="form-group">
+        <label for="other-details">Other Details:</label>
+        <textarea id="other-details" name="other-details"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      
+      <button class="button" type="submit">Submit Report</button>
+    </form>
+    
+    <a href="{% url 'home' %}" class="back-button">Back to Home</a>
+  </div>
+</body>
+</html>

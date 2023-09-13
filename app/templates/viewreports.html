@@ -1,0 +1,98 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cyber Crime Help Support - View Reports</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .report-card {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .report-card h2 {
+      margin-top: 0;
+    }
+    
+    .report-card p {
+      margin-bottom: 10px;
+    }
+    
+    .back-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ccc;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .back-button:hover {
+      background-color: #999;
+    }
+    
+    .contact-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .contact-button:hover {
+      background-color: #0056b3;
+    }
+    body {
+
+background-image: url("{% static 'img/bg.jpg' %}");
+background-size: 100%;
+
+
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome, {{ username }}</h1>
+    
+    {% if reports %}
+      {% for report in reports %}
+        <div class="report-card">
+          <h2>Report #{{ report.pk }}</h2>
+          <p><strong>Issue Faced:</strong> {{ report.issue_faced }}</p>
+          <p><strong>Device Caused:</strong> {{ report.device_caused }}</p>
+          {% if report.screenshot %}
+            <p><strong>Screenshot:</strong> <img src="{{ report.screenshot.url }}" alt="Screenshot" width="200"></p>
+          {% endif %}
+          <p><strong>Other Details:</strong> {{ report.other_details }}</p>
+          <p><strong>Email:</strong> {{ report.email }}</p>
+          <p><strong>Phone Number:</strong> {{ report.phone_number }}</p>
+          <a href="{% url 'contact' report.pk %}" class="contact-button">Contact</a>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No reports found.</p>
+    {% endif %}
+    
+    <a href="/admin" class="back-button">Back to Admin Page</a>
+  </div>
+</body>
+</html>

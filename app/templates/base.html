@@ -1,0 +1,96 @@
+{%load static%}
+<style>
+    /* === removing default button style ===*/
+.button,.button3 {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+}
+
+/* button styling */
+.button {
+  --border-right: 6px;
+  --text-stroke-color: rgba(255,255,255,0.6);
+  --animation-color: #37FF8B;
+  --fs-size: 2em;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+  width: 200px;
+}
+.button3 {
+  --border-right: 6px;
+  --text-stroke-color: rgba(255,255,255,0.6);
+  --animation-color: #ff0000;
+  --fs-size: 2em;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+  width: 200px;
+}
+/* this is the text, when you hover on button */
+.hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+/* hover */
+.button:hover .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color))
+}
+.button3:hover .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color))
+}
+.buttons{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+body {
+
+background-image: url("{% static 'img/cybersecurity.jpg' %}");
+overflow: hidden;
+position: relative;
+left: -400px;
+background-position: left;
+background-size: 100%;
+
+}
+</style>
+
+<div class="buttons">
+<button data-text="Awesome" class="button" onclick="location.href='{% url 'user_login' %}'">
+    <span class="actual-text">&nbsp;SIGN IN&nbsp;</span>
+    <span class="hover-text" aria-hidden="true">&nbsp;SIGN IN&nbsp;</span>
+</button>
+<button data-text="Awesome" class="button"onclick="location.href='{% url 'signup' %}'">
+    <span class="actual-text">&nbsp;SIGN UP&nbsp;</span>
+    <span class="hover-text" aria-hidden="true">&nbsp;SIGN UP&nbsp;</span>
+</button>
+<button data-text="Awesome" class="button3"onclick="location.href='{% url 'admin_login' %}'">
+  <span class="actual-text">&nbsp;ADMIN&nbsp;</span>
+  <span class="hover-text" aria-hidden="true">&nbsp;ADMIN&nbsp;</span>
+</button>
+</div>
